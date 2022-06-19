@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+    <link rel="stylesheet" crossorigin="anonymous"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" >
+
+	<script crossorigin="anonymous"
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" >
+	</script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Food Tracker!</title>
+</head>
+
+<body>
+    <header>
+      <h1 class="header-1">Food Tracker!</h1>
+    </header>
+    <div class="container" >
+        <form style="margin-top: 20px"  action="http://127.0.0.1:5000/pretragaHrane" method="post">
+            <textarea name="obrok" style="font-size: 30px; text-transform: uppercase; resize: none; height:37px; overflow:hidden; background: transparent; border: none; outline: none;" class="form-control" readonly>{{ obrok }}</textarea>
+
+            <textarea name="datum" hidden>{{ datum }}</textarea>
+            <div class="form-group has-search">
+                <span class="fa fa-search form-control-feedback"></span>
+                <input style="max-width: 320px;" type="search" class="form-control" name="pretrazi" placeholder="Pretrazi hranu" required>
+            </div>
+             <div class="form-group">
+                <input style="width: 320px; background-color: #48BF53; border: none; margin:5px;"  class="btn btn-primary" type="submit" value="Pretrazi!"></br>
+           </div>
+        </form>
+
+        <form action="http://127.0.0.1:5000/zavrsi" method="post">
+            <textarea name="datum" hidden>{{ datum }}</textarea>
+            <div class="form-group">
+                <input style="width: 320px; background-color: #48BF53; border: none; margin:5px;"  class="btn btn-primary" type="submit" value="Zavrsi!"></br>
+           </div>
+        </form>
+        <div id="lista">
+            {% block body %}
+            {% endblock %}
+        </div>
+    </div>
+</body>

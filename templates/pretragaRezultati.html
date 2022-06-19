@@ -1,0 +1,31 @@
+{% extends "pretragaHrane.html" %}
+{% block title %}Index{% endblock %}
+
+{% block body %}
+ <div class="container">
+    <form action="http://127.0.0.1:5000/provera" method="post">
+        <textarea name="obrok" hidden>{{ obrok }}</textarea>
+        <textarea name="datum" hidden>{{ datum }}</textarea>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Naziv</th>
+              <th scope="col">Kolicina</th>
+              <th scope="col">Detaljnije</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for i in lista %}
+            <tr>
+              <th scope="row">{{ loop.index }}</th>
+              <td> {{ i['name'] }} </td>
+              <td> <input class="kolicina" type="number" name="kol{{ loop.index }}" value="100"> g</td>
+              <td> <input name="detalji" style="width: 10ch; background-color: #48BF53; border: none;"  class="btn btn-primary" type="submit" value="detaljnije  ,{{ i['id'] }},{{ loop.index }}"> </td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+    </form>
+ </div>
+{% endblock %}
